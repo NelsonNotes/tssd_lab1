@@ -12,12 +12,14 @@ class List {
   Node *head;
 
 public:
-  List(string _text);
+  List(string);
   ~List();
-  void push(string _text);
-  void add(string _text);
-  void del(int num);
-  int find(string _text);
+  void push(string);
+  void add(string);
+  void del(int);
+  int find(string);
   void show();
+  void sort();
+  bool cmp(Node *, Node *);
 };
 #endif // LIST_H
