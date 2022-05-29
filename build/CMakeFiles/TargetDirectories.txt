@@ -1,0 +1,3 @@
+D:/bmstu/sem4/trps/labs-dz/lab1/program/build/CMakeFiles/maketest.dir
+D:/bmstu/sem4/trps/labs-dz/lab1/program/build/CMakeFiles/ALL_BUILD.dir
+D:/bmstu/sem4/trps/labs-dz/lab1/program/build/CMakeFiles/ZERO_CHECK.dir

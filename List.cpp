@@ -4,13 +4,23 @@
 
 using namespace std;
 
+bool cmp(Node *p, Node *q) {
+  return p->text <= q->text;
+}
+
+List::List() {
+  head = nullptr;
+}
+
 List::List(string _text) {
+  list_length++;
   head = new Node;
   head->text = _text;
   head->next = nullptr;
 }
 
 List::~List() {
+  cout << "Implicit call of ~List() destructor" << endl;
   Node *cur;
   while (head) {
     cur = head->next;
@@ -20,6 +30,7 @@ List::~List() {
 }
 
 void List::push(string _text) {
+  list_length++;
   Node *cur = new Node;
   cur->text = _text;
   cur->next = head;
@@ -27,17 +38,26 @@ void List::push(string _text) {
 }
 
 void List::add(string _text) {
-  Node *cur = head;
-  while (cur->next) {
+  list_length++;
+  Node *cur;
+  if (!head) {
+    head = new Node;
+    head->next = nullptr;
+    head->text = _text;
+  } else {
+    cur = head;
+    while (cur->next) {
+      cur = cur->next;
+    }
+    cur->next = new Node;
     cur = cur->next;
+    cur->next = nullptr;
+    cur->text = _text;
   }
-  cur->next = new Node;
-  cur = cur->next;
-  cur->next = nullptr;
-  cur->text = _text;
 }
 
 void List::del(int num) {
+  list_length--;
   Node *cur = head;
   Node *hook = nullptr;
   if (num == 0) {
@@ -57,6 +77,30 @@ void List::del(int num) {
   cur->next = hook;
 }
 
+void List::del_by_val(string _text) {
+  list_length--;
+  Node *cur = head;
+  Node *hook = nullptr;
+  if (head->text == _text) {
+    head = cur->next;
+    delete cur;
+    return;
+  } 
+  while (cur->next) {
+    if (cur->next->text == _text) {
+      if (cur->next->next) {
+        hook = cur->next->next;
+      } else {
+        hook = nullptr;
+      }
+      delete cur->next;
+      cur->next = hook;
+      return;
+    }
+    cur = cur->next;
+  }
+}
+
 int List::find(string _text) {
   Node *cur = head;
   int cnt = 0;
@@ -73,20 +117,35 @@ int List::find(string _text) {
 void List::show() {
   Node *cur = head;
   if (!head) {
-    cout << "List is empty";
+    cout << "    List is empty" << endl;
     return;
   }
-  cout << "Head is: '" << head->text << "'" << endl;
+  cout << "    Head is: '" << head->text << "'" << endl;
+  cout << "    Length is: " << list_length << endl << endl;
   while (cur) {
-    cout << cur->text << endl;
+    cout << "        " << cur->text << endl;
     cur = cur->next;
   }
-  cout << endl;
+  cout << endl << endl;
 }
 
-bool List::cmp(Node *p, Node *q) {
-  return p->text <= q->text;
+int List::length() {
+  return list_length;
 }
+
+
+// int List::length(bool recount) {
+//   Node *cur = head;
+//   int cnt = 0;
+//   if (!head) {
+//     return cnt;
+//   }
+//   while (cur) {
+//     cnt++;
+//     cur = cur->next;
+//   }
+//   return cnt;
+// }
 
 void List::sort() {               // merge sort
   Node *p, *q, *e, *tail;

@@ -1,0 +1,10 @@
+^D:\BMSTU\SEM4\TRPS\LABS-DZ\LAB1\PROGRAM\CMAKELISTS.TXT
+setlocal
+D:\apps\scoop\apps\cmake\3.22.3\bin\cmake.exe -SD:/bmstu/sem4/trps/labs-dz/lab1/program -BD:/bmstu/sem4/trps/labs-dz/lab1/program/build --check-stamp-file D:/bmstu/sem4/trps/labs-dz/lab1/program/build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

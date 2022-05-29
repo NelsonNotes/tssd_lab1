@@ -1,11 +1,11 @@
 #include <iostream>
 #include <string>
-#include "List.h"
+#include "NestList.h"
 
 using namespace std;
 
 int main() {
-  List *list = new List("Deus vult.");
+  NestList *list = new NestList("Deus vult.");
   list->add("The quick brown fox jumps over the lazy dog.");
   list->add("Ave Maria.");
   list->add("Why merge-sort is better than quicksort for linked lists?");
@@ -33,12 +33,12 @@ int main() {
   cout << "Deleted 0 and 5 element." << endl << endl;
   list->show();
   cout << "---------------------------------------------------------" << endl;
-  cout << "Let's try merge-sort on our linked list: " << endl;
+  cout << "Let's try merge-sort on our nested list: " << endl;
   list->sort();
   cout << "List has been sorted." << endl << endl;
   list->show();
   cout << "---------------------------------------------------------" << endl;
-  cout << "Now deleting list: " << endl;
+  cout << "Now deleting nested list: " << endl;
   delete list;
   cout << "deleted" << endl << endl;
   return 0;
