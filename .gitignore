@@ -1,4 +1,4 @@
 .vscode
 main.exe
-build/
-!build/build_and_run.ps1
+build/*
+!build_and_run.ps1
